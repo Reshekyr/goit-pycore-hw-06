@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from address_book import AddressBook, Record
+from main import AddressBook, Record
 
 if __name__ == "__main__":
     # Створення нової адресної книги
@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     # Створення та додавання нового запису для Jane
     jane_record = Record("Jane")
-    jane_record.add_phone("9876543210")
+    jane_record.add_phone("098sss1234567")
     book.add_record(jane_record)
 
     # Виведення всіх записів у книзі
@@ -35,3 +35,5 @@ if __name__ == "__main__":
 
     # Видалення запису Jane
     book.delete("Jane")
+
+    broken_phone = john.add_phone('098sss1234567')

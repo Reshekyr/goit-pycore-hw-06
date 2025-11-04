@@ -23,10 +23,10 @@ class Phone(Field):
     """Поле номера телефону з валідацією (рівно 10 цифр)."""
 
     def __init__(self, value: str):
-        digits = ''.join(ch for ch in str(value) if ch.isdigit())
-        if len(digits) != 10:
+        s = str(value)
+        if not (s.isdigit() and len(s) == 10):
             raise ValueError("Phone number must contain exactly 10 digits")
-        super().__init__(digits)
+        super().__init__(s)
 
 
 class Record:
@@ -61,9 +61,10 @@ class Record:
 
     # Пошук телефону: повертає Phone або None
     def find_phone(self, phone: str) -> Optional[Phone]:
-        digits = ''.join(ch for ch in str(phone) if ch.isdigit())
+        """Повертає об'єкт Phone, якщо знайдено точний збіг."""
+        s = str(phone)
         for p in self.phones:
-            if p.value == digits:
+            if p.value == s:
                 return p
         return None
 
